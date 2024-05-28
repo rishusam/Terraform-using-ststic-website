@@ -1,3 +1,4 @@
+![Screenshot (28)](https://github.com/rishusam/Terraform-using-ststic-website/assets/113242832/999c0f31-739d-4750-980f-2a17dc9b4e02)
 
 ![img3](https://github.com/rishusam/Terraform-using-ststic-website/assets/113242832/1e8b78cf-41a2-46a7-a568-c04fb0584a8c)
 ![img4](https://github.com/rishusam/Terraform-using-ststic-website/assets/113242832/a0fdad7e-6969-4f17-b671-bc3d45bf6184)
