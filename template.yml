@@ -1,0 +1,39 @@
+# Define the provider
+provider "aws" {
+  region = "us-east-1"  # Specify your desired AWS region
+}
+
+# Define the S3 bucket for hosting the static website
+resource "aws_s3_bucket" "static_website_bucket" {
+  bucket = "your-unique-bucket-name"  # Specify a unique bucket name for your website
+  acl    = "public-read"  # Set bucket ACL to public-read for website hosting
+
+  website {
+    index_document = "index.html"  # Specify the main index file for your website
+    error_document = "error.html"  # Specify the error document for your website
+  }
+}
+
+# Configure the bucket policy to allow public access to the website content
+resource "aws_s3_bucket_policy" "static_website_bucket_policy" {
+  bucket = aws_s3_bucket.static_website_bucket.bucket
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "${aws_s3_bucket.static_website_bucket.arn}/*"
+    }
+  ]
+}
+EOF
+}
+
+# Output the website URL
+output "website_url" {
+  value = aws_s3_bucket.static_website_bucket.website_endpoint
+}
